@@ -1,16 +1,17 @@
 def main():
     file = open("day_2_input.txt")
-    print(part_1())
+    print(part_1(file))
     file.close()
     return
 
 
-def part_1():
+def part_1(file):
     # scan line by line
     # check each difference
     # check each direction
     # if safe
         # return safe
+    input_to_list(file)
 
 
 def check_direction(previous, difference):
@@ -27,6 +28,13 @@ def check_direction(previous, difference):
 def check_difference():
     pass
 
+
+def input_to_list(file):
+    input_list = []
+    for line in file:
+        input_list.append(line.split())
+    print(input_list)
+    return
 
 if __name__ == "__main__":
     main()
