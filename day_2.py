@@ -6,12 +6,23 @@ def main():
 
 
 def part_1():
-    pass
+    # scan line by line
+    # check each difference
+    # check each direction
+    # if safe
+        # return safe
 
 
-def check_direction():
-    pass
-
+def check_direction(previous, difference):
+    # check that the sign of the current difference is the same as the previous difference
+    for i in range(len(line) - 1):
+        difference = line[i] - line[i + 1]
+        if previous == 0:
+            return True
+        elif difference < 0 and previous < 0 or difference > 0 and previous > 0:
+            return True
+        else:
+            return False
 
 def check_difference():
     pass
