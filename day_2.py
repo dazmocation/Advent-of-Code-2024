@@ -33,7 +33,6 @@ def input_to_list(file):
     input_list = []
     for line in file:
         input_list.append(line.split())
-    print(input_list)
     return
 
 if __name__ == "__main__":
