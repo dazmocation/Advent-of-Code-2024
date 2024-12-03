@@ -6,34 +6,35 @@ def main():
 
 
 def part_1(file):
-    # scan line by line
-    # check each difference
-    # check each direction
-    # if safe
-        # return safe
-    input_to_list(file)
+    input_list = input_to_list(file)
+    safe = 0
+    for line in input_list:
+        if check_diff_and_dir(line):
+            safe += 1
+    return safe
 
 
-def check_direction(previous, difference):
-    # check that the sign of the current difference is the same as the previous difference
+def check_diff_and_dir(line):
+    previous = 0
     for i in range(len(line) - 1):
         difference = line[i] - line[i + 1]
-        if previous == 0:
-            return True
-        elif difference < 0 and previous < 0 or difference > 0 and previous > 0:
-            return True
+        # check if the difference is not in the safe range
+        if not 1 <= difference <= 3:
+            return False
+        # check that the sign of the current difference is the same as the previous difference
+        if previous == 0 or previous < 0 and difference < 0 or previous > 0 and difference > 0:
+            previous = difference
         else:
             return False
-
-def check_difference():
-    pass
+    # if both valid
+    return True
 
 
 def input_to_list(file):
     input_list = []
     for line in file:
         input_list.append(line.split())
-    return
+    return input_list
 
 if __name__ == "__main__":
     main()
