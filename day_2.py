@@ -41,21 +41,34 @@ def check_diff_and_dir(line):
 
 def check_diff_and_dir_2(line):
     previous = 0
-    fail = 0
     for i in range(len(line) - 1):
         difference = line[i] - line[i + 1]
         # check if the difference is not in the safe range
         if not 1 <= abs(difference) <= 3:
-            fail += 1
+            if check_damper(line) == False:
+                return False
+            else:
+                return True
         # check that the sign of the current difference is the same as the previous difference
         if previous == 0 or previous < 0 and difference < 0 or previous > 0 and difference > 0:
             previous = difference
         else:
-            fail += 1
-        if fail > 1:
-            return False
+            if check_damper(line) == False:
+                return False
+            else:
+                return True
     # if both valid
     return True
+
+
+def check_damper(line):
+    for i in range(len(line)):
+        temp = line.pop(i)
+        if check_diff_and_dir(line):
+            return True
+        else:
+            line.insert(i, temp)
+    return False
 
 
 def input_to_list(file):
@@ -63,6 +76,7 @@ def input_to_list(file):
     for line in file:
         input_list.append(list(map(int, line.split())))
     return input_list
+
 
 if __name__ == "__main__":
     main()
