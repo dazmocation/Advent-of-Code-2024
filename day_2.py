@@ -1,5 +1,5 @@
 def main():
-    file = open("day_2_input_test.txt")
+    file = open("day_2_input.txt")
     print(part_1(file))
     file.close()
     return
@@ -20,16 +20,13 @@ def check_diff_and_dir(line):
         difference = line[i] - line[i + 1]
         # check if the difference is not in the safe range
         if not 1 <= abs(difference) <= 3:
-            print("Unsafe 1")
             return False
         # check that the sign of the current difference is the same as the previous difference
         if previous == 0 or previous < 0 and difference < 0 or previous > 0 and difference > 0:
             previous = difference
         else:
-            print("Unsafe 2")
             return False
     # if both valid
-    print("Safe")
     return True
 
 
