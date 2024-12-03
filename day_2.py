@@ -33,6 +33,10 @@ def input_to_list(file):
     input_list = []
     for line in file:
         input_list.append(line.split())
+<<<<<<< HEAD
+=======
+    print(input_list)
+>>>>>>> 33c82b7 (created and verified input_to_list())
     return
 
 if __name__ == "__main__":
